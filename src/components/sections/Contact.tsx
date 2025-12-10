@@ -159,7 +159,7 @@ export default function Contact() {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full py-5 rounded-xl bg-gradient-to-r from-vg-gold to-blue-600 text-vg-dark font-bold text-xl hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-[1.01] transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed border border-blue-400/50"
+                                        className="w-full py-5 rounded-xl bg-vg-gold text-vg-dark font-bold text-xl hover:bg-white transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg hover:shadow-xl hover:scale-[1.01]"
                                     >
                                         {isSubmitting ? "Enviando..." : "Enviar Solicitação"}
                                         {!isSubmitting && <Send size={22} />}
