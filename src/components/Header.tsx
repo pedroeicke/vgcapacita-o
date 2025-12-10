@@ -73,7 +73,7 @@ export default function Header() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 glass border-t border-white/10 p-6 flex flex-col gap-4 backdrop-blur-xl rounded-b-3xl shadow-2xl mx-2 mt-2">
+                <div className="md:hidden absolute top-full left-0 right-0 bg-[#020617] border-t border-white/10 p-6 flex flex-col gap-4 rounded-b-3xl shadow-2xl mx-2 mt-2 z-50">
                     {navItems.map((item) => (
                         <Link
                             key={item.name}

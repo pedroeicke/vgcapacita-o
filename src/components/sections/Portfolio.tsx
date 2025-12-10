@@ -113,7 +113,7 @@ const Card = ({ lecture, index, range, targetScale }: { lecture: any, index: num
     return (
         <div
             ref={containerRef}
-            className="sticky top-32 min-h-[60vh] md:min-h-[500px] flex items-center justify-center mb-10" // sticky top is key
+            className="sticky top-24 md:top-32 h-auto min-h-[600px] md:min-h-[500px] flex items-center justify-center mb-10" // sticky top is key
             style={{
                 zIndex: index + 1,
             }}
@@ -129,12 +129,13 @@ const Card = ({ lecture, index, range, targetScale }: { lecture: any, index: num
                 <div className="absolute top-0 right-0 w-96 h-96 bg-vg-blue/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-vg-gold/10 transition-colors duration-500" />
 
                 <div className="p-6 md:p-14 flex flex-col justify-center h-full relative z-10">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
-                        <div className="flex items-center gap-4">
-                            <span className="w-12 h-12 rounded-xl bg-vg-gold/10 flex items-center justify-center text-vg-gold font-bold text-xl border border-vg-gold/20">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8 group-hover:transform group-hover:translate-x-1 transition-transform duration-300">
+                        <div className="flex flex-col md:flex-row md:items-center gap-4 relative">
+                            {/* Number - Absolute top-right on mobile, normal flow on desktop */}
+                            <span className="absolute top-0 right-0 md:static md:top-auto md:right-auto w-10 h-10 md:w-12 md:h-12 rounded-full md:rounded-xl bg-vg-gold/10 flex items-center justify-center text-vg-gold font-bold text-lg md:text-xl border border-vg-gold/20">
                                 {lecture.id}
                             </span>
-                            <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight group-hover:text-vg-gold-light transition-colors">
+                            <h3 className="text-2xl md:text-4xl font-bold text-white leading-tight group-hover:text-vg-gold-light transition-colors text-left pr-12 md:pr-0">
                                 {lecture.title}
                             </h3>
                         </div>
