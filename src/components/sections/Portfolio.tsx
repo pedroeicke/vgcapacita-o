@@ -113,7 +113,7 @@ const Card = ({ lecture, index, range, targetScale }: { lecture: any, index: num
     return (
         <div
             ref={containerRef}
-            className="relative md:sticky md:top-32 min-h-[600px] md:min-h-[500px] flex items-center justify-center mb-10" // sticky only on desktop
+            className="sticky top-24 md:top-32 h-[650px] md:h-auto md:min-h-[500px] flex items-center justify-center mb-10" // sticky top is key
             style={{
                 zIndex: index + 1,
             }}
