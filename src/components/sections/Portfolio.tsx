@@ -164,7 +164,7 @@ const Card = ({ lecture, index, range, targetScale }: { lecture: any, index: num
 
                     <div className="pl-0 md:pl-16">
                         <Link
-                            href={`#contato?tema=${encodeURIComponent(lecture.title)}`}
+                            href={`/?tema=${encodeURIComponent(lecture.title)}#contato`}
                             className="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-xl bg-vg-gold text-vg-dark font-bold hover:bg-white hover:text-vg-dark transition-all text-base shadow-lg hover:shadow-xl hover:scale-105"
                         >
                             Solicitar Proposta
