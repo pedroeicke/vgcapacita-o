@@ -73,12 +73,12 @@ export default function Header() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 glass shadow-lg border-t border-white/10 p-4 flex flex-col gap-4 backdrop-blur-xl">
+                <div className="md:hidden absolute top-full left-0 right-0 glass border-t border-white/10 p-6 flex flex-col gap-4 backdrop-blur-xl rounded-b-3xl shadow-2xl mx-2 mt-2">
                     {navItems.map((item) => (
                         <Link
                             key={item.name}
                             href={item.href}
-                            className="text-base font-medium text-gray-200 hover:text-vg-gold py-2"
+                            className="text-lg font-medium text-gray-200 hover:text-vg-gold py-3 px-4 rounded-xl hover:bg-white/5 transition-colors"
                             onClick={() => setIsOpen(false)}
                         >
                             {item.name}
@@ -86,7 +86,7 @@ export default function Header() {
                     ))}
                     <Link
                         href="#contato"
-                        className="w-full text-center px-4 py-3 rounded-lg bg-vg-gold text-vg-dark font-semibold"
+                        className="w-full text-center px-4 py-4 rounded-xl bg-vg-gold text-vg-dark font-bold text-lg mt-2"
                         onClick={() => setIsOpen(false)}
                     >
                         Solicitar Proposta

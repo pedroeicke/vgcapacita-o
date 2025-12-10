@@ -128,7 +128,7 @@ const Card = ({ lecture, index, range, targetScale }: { lecture: any, index: num
                 {/* Glow */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-vg-blue/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-vg-gold/10 transition-colors duration-500" />
 
-                <div className="p-10 md:p-14 flex flex-col justify-center h-full relative z-10">
+                <div className="p-6 md:p-14 flex flex-col justify-center h-full relative z-10">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
                         <div className="flex items-center gap-4">
                             <span className="w-12 h-12 rounded-xl bg-vg-gold/10 flex items-center justify-center text-vg-gold font-bold text-xl border border-vg-gold/20">

@@ -24,7 +24,7 @@ export default function AboutFull() {
                 <div className="grid md:grid-cols-3 gap-8 mb-24">
                     <motion.div
                         whileHover={{ y: -10 }}
-                        className="glass-card p-8 rounded-2xl border-t-4 border-vg-blue"
+                        className="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-vg-blue"
                     >
                         <Target className="text-vg-blue-light mb-6" size={48} />
                         <h3 className="text-2xl font-bold text-white mb-4">Nossa Missão</h3>
@@ -35,7 +35,7 @@ export default function AboutFull() {
 
                     <motion.div
                         whileHover={{ y: -10 }}
-                        className="glass-card p-8 rounded-2xl border-t-4 border-vg-gold"
+                        className="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-vg-gold"
                     >
                         <Eye className="text-vg-gold mb-6" size={48} />
                         <h3 className="text-2xl font-bold text-white mb-4">Nossa Visão</h3>
@@ -46,7 +46,7 @@ export default function AboutFull() {
 
                     <motion.div
                         whileHover={{ y: -10 }}
-                        className="glass-card p-8 rounded-2xl border-t-4 border-blue-900"
+                        className="glass-card p-6 md:p-8 rounded-2xl border-t-4 border-blue-900"
                     >
                         <Heart className="text-blue-500 mb-6" size={48} />
                         <h3 className="text-2xl font-bold text-white mb-4">Nossos Valores</h3>
@@ -65,7 +65,7 @@ export default function AboutFull() {
                     {/* Column 1: O que Fazemos */}
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="glass p-8 rounded-3xl border border-white/10 h-full"
+                        className="glass p-6 md:p-8 rounded-3xl border border-white/10 h-full"
                     >
                         <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <span className="w-1.5 h-8 bg-vg-gold rounded-full" />
@@ -92,7 +92,7 @@ export default function AboutFull() {
                     {/* Column 2: Diferenciais (Highlight) */}
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="p-8 rounded-3xl border border-vg-gold/30 h-full bg-gradient-to-b from-vg-gold/10 to-transparent relative overflow-hidden group"
+                        className="p-6 md:p-8 rounded-3xl border border-vg-gold/30 h-full bg-gradient-to-b from-vg-gold/10 to-transparent relative overflow-hidden group"
                     >
                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                             <Eye size={100} />
@@ -120,7 +120,7 @@ export default function AboutFull() {
                     {/* Column 3: Público-Alvo */}
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="glass p-8 rounded-3xl border border-white/10 h-full"
+                        className="glass p-6 md:p-8 rounded-3xl border border-white/10 h-full"
                     >
                         <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                             <span className="w-1.5 h-8 bg-vg-gold rounded-full" />
