@@ -17,7 +17,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "VG Capacitação - Palestras Lei 14.133/2021",
+  title: "VG Capacitação - Soluções educacionais de alta performance e segurança jurídica para transformar o setor público.",
   description: "Portfólio de palestras e treinamentos sobre a Nova Lei de Licitações com Vinicius Geronasso.",
 };
 
