@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Methodology() {
     return (
-        <section id="metodologia" className="py-24 relative scroll-mt-20 bg-white">
+        <section id="metodologia" className="py-24 relative scroll-mt-20 bg-white overflow-hidden">
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
                 <div className="grid md:grid-cols-2 gap-20">

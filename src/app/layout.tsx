@@ -30,6 +30,7 @@ export default function RootLayout({
     <html lang="pt-BR" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${poppins.variable} font-body antialiased`}
+        suppressHydrationWarning
       >
         <Header />
         <main className="min-h-screen">

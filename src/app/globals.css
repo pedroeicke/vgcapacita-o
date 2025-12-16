@@ -24,6 +24,11 @@
   --foreground: #f8fafc;
 }
 
+html,
+body {
+  max-width: 100%;
+}
+
 body {
   background: radial-gradient(circle at top center, #023e8a 0%, #001233 70%);
   background-attachment: fixed;

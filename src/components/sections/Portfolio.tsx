@@ -93,7 +93,7 @@ export default function Portfolio() {
 
                 <div className="flex flex-col gap-10">
                     {lectures.map((lecture, i) => (
-                        <Card key={lecture.id} lecture={lecture} index={i} range={[i * 0.25, 1]} targetScale={1 - (lectures.length - i) * 0.05} />
+                        <Card key={lecture.id} lecture={lecture} index={i} />
                     ))}
                 </div>
             </div>
@@ -101,20 +101,12 @@ export default function Portfolio() {
     );
 }
 
-const Card = ({ lecture, index, range, targetScale }: { lecture: any, index: number, range: number[], targetScale: number }) => {
-    const containerRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ['start end', 'start start']
-    })
-
-    const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale]);
-
+const Card = ({ lecture, index }: { lecture: any, index: number }) => {
     return (
         <div
-            ref={containerRef}
-            className="sticky top-24 md:top-32 h-[85vh] md:h-auto md:min-h-[500px] flex items-center justify-center mb-10" // sticky top is key
+            className="sticky h-fit flex items-center justify-center mb-10"
             style={{
+                top: `120px`, // Constant top for full replacement effect
                 zIndex: index + 1,
             }}
         >
@@ -123,7 +115,7 @@ const Card = ({ lecture, index, range, targetScale }: { lecture: any, index: num
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5 }}
-                className="w-full max-w-7xl mx-auto bg-[#0B1120] rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative group"
+                className="w-full max-w-[453px] h-[517px] md:max-w-[1277px] md:h-[410px] mx-auto bg-[#0B1120] rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative group"
             >
                 {/* Glow */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-vg-blue/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 group-hover:bg-vg-gold/10 transition-colors duration-500" />

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Deliverables() {
     return (
-        <section id="entregaveis" className="py-24 relative scroll-mt-20">
+        <section id="entregaveis" className="py-24 relative scroll-mt-20 overflow-hidden">
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
                 <div className="text-center max-w-4xl mx-auto mb-20">

@@ -13,7 +13,7 @@ const highlights = [
 
 export default function AboutSummary() {
     return (
-        <section className="py-20 relative z-10">
+        <section className="py-20 relative z-10 overflow-hidden">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col md:flex-row gap-16 items-center">
 
