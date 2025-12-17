@@ -44,13 +44,42 @@ export default function Contact() {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        setTimeout(() => {
+
+        const formData = {
+            nome: (e.target as any).nome.value,
+            email: (e.target as any).email.value,
+            telefone: (e.target as any).telefone.value,
+            orgao: (e.target as any).orgao.value,
+            cidade: (e.target as any).cidade.value,
+            modalidade: (e.target as any).modalidade.value,
+            temas: selectedThemes,
+            mensagem: (e.target as any).mensagem.value
+        };
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setSubmitted(true);
+            } else {
+                const data = await response.json();
+                alert(`Erro: ${data.error}`);
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Erro de conexão. Verifique sua internet.');
+        } finally {
             setIsSubmitting(false);
-            setSubmitted(true);
-        }, 1500);
+        }
     };
 
     return (
@@ -94,33 +123,33 @@ export default function Contact() {
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">Nome Completo</label>
-                                        <input required type="text" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="Seu nome" />
+                                        <input required name="nome" type="text" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="Seu nome" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">E-mail Institucional</label>
-                                        <input required type="email" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="seu.email@orgao.gov.br" />
+                                        <input required name="email" type="email" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="seu.email@orgao.gov.br" />
                                     </div>
                                 </div>
 
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">Telefone / WhatsApp</label>
-                                        <input required type="tel" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="(XX) 99999-9999" />
+                                        <input required name="telefone" type="tel" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="(XX) 99999-9999" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">Órgão / Entidade</label>
-                                        <input required type="text" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="Ex: Prefeitura de Curitiba" />
+                                        <input required name="orgao" type="text" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="Ex: Prefeitura de Curitiba" />
                                     </div>
                                 </div>
 
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">Cidade / Estado</label>
-                                        <input required type="text" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="Ex: Curitiba/PR" />
+                                        <input required name="cidade" type="text" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="Ex: Curitiba/PR" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">Modalidade Desejada</label>
-                                        <select className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10 [&>option]:text-gray-900">
+                                        <select name="modalidade" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10 [&>option]:text-gray-900">
                                             <option>Selecione...</option>
                                             <option>Presencial (In Company)</option>
                                             <option>Online (Ao Vivo)</option>
@@ -152,7 +181,7 @@ export default function Contact() {
 
                                 <div>
                                     <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">Mensagem Adicional</label>
-                                    <textarea rows={4} className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="Descreva sua necessidade específica..." />
+                                    <textarea name="mensagem" rows={4} className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="Descreva sua necessidade específica..." />
                                 </div>
 
                                 <div className="pt-6">
