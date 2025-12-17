@@ -19,6 +19,19 @@ const themes = [
     "SRP e Gestão de Atas"
 ];
 
+const formatPhone = (value: string) => {
+    // Remove tudo que não é número
+    const numbers = value.replace(/\D/g, "");
+
+    // Limita a 11 dígitos
+    const truncated = numbers.substring(0, 11);
+
+    // Aplica a máscara
+    if (truncated.length <= 2) return truncated;
+    if (truncated.length <= 7) return `(${truncated.substring(0, 2)}) ${truncated.substring(2)}`;
+    return `(${truncated.substring(0, 2)}) ${truncated.substring(2, 7)}-${truncated.substring(7)}`;
+};
+
 export default function Contact() {
     const searchParams = useSearchParams();
     const preSelectedTheme = searchParams.get("tema");
@@ -26,6 +39,7 @@ export default function Contact() {
     const [selectedThemes, setSelectedThemes] = useState<string[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [phone, setPhone] = useState("");
 
     useEffect(() => {
         if (preSelectedTheme) {
@@ -44,6 +58,11 @@ export default function Contact() {
         }
     };
 
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const formatted = formatPhone(e.target.value);
+        setPhone(formatted);
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -51,7 +70,7 @@ export default function Contact() {
         const formData = {
             nome: (e.target as any).nome.value,
             email: (e.target as any).email.value,
-            telefone: (e.target as any).telefone.value,
+            telefone: phone,
             orgao: (e.target as any).orgao.value,
             cidade: (e.target as any).cidade.value,
             modalidade: (e.target as any).modalidade.value,
@@ -112,7 +131,11 @@ export default function Contact() {
                                     Agradecemos o contato. Nossa equipe retornará em breve com a proposta solicitada.
                                 </p>
                                 <button
-                                    onClick={() => setSubmitted(false)}
+                                    onClick={() => {
+                                        setSubmitted(false);
+                                        setPhone("");
+                                        setSelectedThemes([]);
+                                    }}
                                     className="mt-10 text-vg-gold font-semibold hover:text-white transition-colors underline"
                                 >
                                     Enviar nova solicitação
@@ -134,7 +157,15 @@ export default function Contact() {
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">Telefone / WhatsApp</label>
-                                        <input required name="telefone" type="tel" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10" placeholder="(XX) 99999-9999" />
+                                        <input
+                                            required
+                                            name="telefone"
+                                            type="tel"
+                                            value={phone}
+                                            onChange={handlePhoneChange}
+                                            className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-2 focus:ring-vg-blue focus:border-transparent outline-none transition-all hover:bg-white/10"
+                                            placeholder="(XX) 99999-9999"
+                                        />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-300 mb-3 ml-1">Órgão / Entidade</label>
